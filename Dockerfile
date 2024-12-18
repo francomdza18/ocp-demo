@@ -4,8 +4,13 @@ FROM nginx:latest
 # Copiar el archivo index.html personalizado en el directorio adecuado
 COPY index.html /usr/share/nginx/html/index.html
 
-# Crear el directorio de caché y asignar permisos al usuario nginx
-RUN mkdir -p /var/cache/nginx/client_temp && chown -R nginx:nginx /var/cache/nginx
+# Eliminar la directiva "user" en nginx.conf, ya que no se requiere
+RUN sed -i '/^user /d' /etc/nginx/nginx.conf
+
+# Crear los directorios de caché y asignar los permisos correctos
+RUN mkdir -p /var/cache/nginx/proxy_temp && \
+    mkdir -p /var/cache/nginx/client_temp && \
+    chown -R nginx:nginx /var/cache/nginx
 
 # Exponer el puerto 80
 EXPOSE 80
