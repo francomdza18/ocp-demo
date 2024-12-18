@@ -4,6 +4,9 @@ FROM nginx:latest
 # Copiar el archivo index.html personalizado en el directorio adecuado
 COPY index.html /usr/share/nginx/html/index.html
 
+# Asegurarse de que el archivo tenga los permisos correctos
+RUN chown nginx:nginx /usr/share/nginx/html/index.html
+
 # Exponer el puerto 80
 EXPOSE 80
 
