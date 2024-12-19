@@ -7,11 +7,12 @@ COPY index.html /usr/share/nginx/html/index.html
 # Eliminar la directiva "user" en nginx.conf, ya que no se requiere
 RUN sed -i '/^user /d' /etc/nginx/nginx.conf
 
-# Crear los directorios de caché necesarios y asignar los permisos correctos para el usuario nginx
+# Crear todos los directorios de caché necesarios y asignar permisos para el usuario nginx
 RUN mkdir -p /var/cache/nginx/proxy_temp && \
     mkdir -p /var/cache/nginx/client_temp && \
     mkdir -p /var/cache/nginx/fastcgi_temp && \
     mkdir -p /var/cache/nginx/uwsgi_temp && \
+    mkdir -p /var/cache/nginx/scgi_temp && \
     chown -R 101:101 /var/cache/nginx
 
 # Exponer el puerto 80
