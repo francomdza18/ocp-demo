@@ -21,7 +21,8 @@ spec:
           args:
             - apk add --no-cache git && \
               git clone https://github.com/tu_usuario/tu_repositorio.git /git-repo && \
-              cp -r /git-repo/* /mnt/apache-content/
+              cp -r /git-repo/* /mnt/apache-content/ && \
+              echo "Clonación y copia completada" || echo "Error en clonación y copia"
           volumeMounts:
             - name: apache-content
               mountPath: /mnt/apache-content
