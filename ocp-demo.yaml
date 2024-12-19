@@ -5,6 +5,8 @@ metadata:
   name: nginx-deployment
   namespace: ocp-demo
 spec:
+  serviceAccountName: demo-nube
+  automountServiceAccountToken: false
   replicas: 1
   selector:
     matchLabels:
