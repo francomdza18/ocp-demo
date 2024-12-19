@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: apache-index-config
+  namespace: ocp-demo
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Hola a todos, en este momento estoy viviendo en OPENSHIFT de CDMX</title>
+    </head>
+    <body>
+        <h1>CFE INTERNET TELECOMUNICACIONES PARA TODOS</h1>
+    </body>
+    </html>
