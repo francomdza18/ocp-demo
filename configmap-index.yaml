@@ -6,11 +6,318 @@ metadata:
 data:
   index.html: |
     <!DOCTYPE html>
-    <html>
+    <html lang="en">
     <head>
-        <title>Hola a todos, en este momento estoy viviendo en OPENSHIFT de CDMX</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CFE TEIT | GORPT</title>
+        <style>
+            /* Estilo general */
+            body {
+                font-family: 'Arial', sans-serif;
+                margin: 0;
+                padding: 0;
+                color: #333;
+                line-height: 1.6;
+                background-color: #ffffff; /* Fondo suave */
+                font-size: 16px; /* Tamaño base de texto para usar unidades relativas */
+            }
+    
+            /* Header */
+            header {
+                background-color: #660000; /* Color header CFE */
+                color: #fff;
+                text-align: center;
+                position: relative;
+                padding: 1rem 0; /* Ajuste de padding para dispositivos móviles */
+            }
+    
+            header img {
+                width: 50%; /* Tamaño reducido de la imagen */
+                height: auto;
+                object-fit: contain; /* Mantiene la proporción de la imagen */
+                margin-bottom: 1rem; /* Espaciado entre la imagen y el título */
+                border-radius: 8px; /* Bordes redondeados */
+            }
+    
+            .container {
+                max-width: 1200px;
+                margin: 2rem auto;
+                padding: 1rem;
+            }
+    
+            .section {
+                margin-bottom: 2rem;
+                padding: 1.5rem;
+                border-radius: 10px;
+                background-color: #fff;
+                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            }
+    
+            .section h2 {
+                color: #660000; /*  para encabezados */
+                margin-top: 0;
+                font-size: 2rem; /* Ajuste para mejor legibilidad */
+                font-weight: bold;
+            }
+    
+            .section p {
+                font-size: 1.1rem;
+                color: #555;
+            }
+    
+            /* Grid de productos */
+            .product-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1rem;
+                margin-top: 2rem;
+            }
+    
+            .product-box {
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                padding: 1rem;
+                text-align: center;
+                background-color: #fff;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+    
+            .product-box:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            }
+    
+            .product-box a {
+                text-decoration: none;
+                color: #8f0000; /* Color de los enlaces */
+                font-weight: bold;
+                font-size: 1rem;
+            }
+    
+            footer {
+                background-color: #333;
+                color: #fff;
+                text-align: center;
+                padding: 1.5rem 0;
+            }
+    
+            footer p {
+                margin: 0;
+            }
+    
+            /* Ajustes responsive */
+            @media (max-width: 768px) {
+                body {
+                    font-size: 14px; /* Ajuste del tamaño de fuente para pantallas pequeñas */
+                }
+    
+                .section h2 {
+                    font-size: 1.6rem; /* Ajuste de tamaño del título */
+                }
+    
+                .product-box {
+                    padding: 1rem;
+                }
+    
+                header img {
+                    width: 50%; /* Ajuste para pantallas más pequeñas */
+                }
+    
+                /* Ajustar márgenes y padding */
+                .container {
+                    padding: 0.5rem;
+                }
+    
+                .service-block {
+                    padding: 1rem; /* Ajuste del padding para pantallas pequeñas */
+                    margin-bottom: 1rem; /* Reducción de espacio entre los bloques */
+                }
+    
+                .service-block summary {
+                    font-size: 1.1rem; /* Tamaño de la fuente del summary */
+                    padding: 10px; /* Ajuste de padding */
+                }
+    
+                .service-block ul {
+                    padding-left: 10px; /* Reducir el espacio de los ítems */
+                    font-size: 0.9rem; /* Tamaño de texto más pequeño */
+                }
+            }
+    
+            /* Estilo de los bloques de servicio */
+            .service-block {
+                margin-bottom: 2rem;
+                border: 1px solid #8f0000;
+                border-radius: 8px;
+                padding: 1.5rem;
+                background-color: #fff;
+                position: relative;
+                overflow: hidden;
+                transition: all 0.3s ease;
+            }
+    
+            .service-block[open] {
+                background-size: cover;
+                background-position: center;
+                color: #fff;
+            }
+    
+            .service-block summary {
+                cursor: pointer;
+                font-weight: bold;
+                font-size: 1.3rem;
+                color: #8f0000;
+                background-color: #fff;
+                padding: 12px;
+                border-radius: 8px;
+                border: 2px solid #8f0000;
+                transition: all 0.3s ease;
+            }
+    
+            .service-block summary:hover {
+                background-color: #8f0000;
+                color: #fff;
+            }
+    
+            .service-block ul {
+                list-style-type: none;
+                padding-left: 20px;
+                margin-top: 10px;
+                font-size: 1rem;
+                color: #333;
+            }
+    
+            .service-block[open] ul {
+                background: rgba(255, 255, 255, 0.9);
+                padding: 10px;
+                border-radius: 5px;
+            }
+        </style>
     </head>
     <body>
-        <h1>CFE INTERNET TELECOMUNICACIONES PARA TODOS</h1>
+        <header>
+            <img src="cfe_teit.png" alt="Header Image">
+            <h1>Gerencia de Operación de la Red Pública de Telecomunicaciones</h1>
+        </header>
+    
+        <div class="container">
+            <div class="section">
+                <h2>Misión</h2>
+                <p>
+                    Prestar y proveer servicios de telecomunicaciones sin fines de lucro, para garantizar el derecho de acceso a las tecnologías de la información y comunicación, incluido el de banda ancha e internet, prioritariamente en localidades de alta y muy alta marginación, como servicios fundamentales para el bienestar y la inclusión social.
+                </p>
+            </div>
+    
+            <div class="section">
+                <h2>Visión</h2>
+                <p>
+                    Ser una empresa líder en telecomunicaciones que garantice el desarrollo igualitario, incluyente y sostenible mediante el acceso a las nuevas tecnologías de la información, con presencia en todo el territorio nacional.
+                </p>
+            </div>
+    
+            <div class="section">
+                <h2>Servicios de la Red Pública de Telecomunicaciones</h2>
+                <!-- Red Transporte -->
+                <details class="service-block" data-bg="red-transporte-bg.jpg">
+                    <summary>Red Transporte</summary>
+                    <ul>
+                        <li>- Red Transporte de Larga Distancia de 10Gbps a 100 Gbps con y sin redundancia</li>
+                        <li>- Red Transporte Metropolitana</li>
+                        <li>- Red Rural</li>
+                    </ul>
+                </details>
+                <!-- Red IP -->
+                <details class="service-block" data-bg="red-ip-bg.jpg">
+                    <summary>Red IP</summary>
+                    <ul>
+                        <li>- Transporte IP LAN2LAN</li>
+                        <li>- Transporte IP L3VPN MPLS</li>
+                        <li>- Internet dedicado desde 1 Gbps hasta 100 Gbps</li>
+                        <li>- Intercambiadores de tráfico en sitios neutros (IXP)</li>
+                        <li>- Asignación  de direccionamiento IPv4 e IPv6 Público</li>
+                    </ul>
+                </details>
+                <!-- Centro de Datos -->
+                <details class="service-block" data-bg="centro-datos-bg.jpg">
+                    <summary>Centro de Datos</summary>
+                    <ul>
+                        <li>IaaS: Infraestructura como Servicio</li>
+                        <li>PaaS: Plataforma como Servicio</li>
+                        <li>SDS: Almacenamiento definido por Software</li>
+                        <li>Respaldo y Recuperación</li>
+                    </ul>
+                </details>
+                <!-- Monitoreo -->
+                <details class="service-block" data-bg="monitoreo-bg.jpg">
+                    <summary>Monitoreo</summary>
+                    <ul>
+                        <li>- Monitoreo de Servicios</li>
+                        <li>- Atención 24 x 7 x 365</li>
+                        <li>- Coordinación del personal de  mantenimiento de primera línea</li>
+                        <li>- Seguimiento a incidentes mediante plataforma automatizada</li>
+                    </ul>
+                </details>
+                <!-- Red de Acceso y Agregación -->
+                <details class="service-block" data-bg="acceso-agregacion-bg.jpg">
+                    <summary>Red de Acceso y Agregación</summary>
+                    <ul>
+                        <li>- Transporte de Datos desde 1 Gbps hasta 10 Gbps</li>
+                        <li>- Internet desde 1 Gbps hasta 10 Gbps</li>
+                        <li>- WIFI</li>
+                        <li>- Microondas</li>
+                        <li>- Despliegue de Fibra Óptica RENAyA</li>
+                        <li>- Radio Bases (4g lte)</li>
+                    </ul>
+                </details>
+                 <!-- Seguridad Informática -->
+                <details class="service-block" data-bg="seguridad-informatica-bg.jpg">
+                    <summary>Seguridad Informática</summary>
+                    <ul>
+                        <li>- Análisis de vulnerabilidades</li>
+                        <li>- Publicación de sitios institucionales</li>
+                        <li>- Respuesta a incidentes</li>
+                        <li>- WAAF / DNS SEC</li>
+                        <li>- Clean Pipes</li>
+                    </ul>
+                </details>
+            </div>
+    
+            <div class="section">
+                <h2>Indicadores Nacionales</h2>
+                <div class="product-grid">
+                    <div class="product-box">
+                        <a href="https://mapafo.cfeteit.mx/despliegue" target="_blank">Fuentes de Fibra Óptica (HIT)</a>
+                    </div>
+                    <div class="product-box">
+                        <a href="https://mapa.internetparatodos.cfe.mx/?entidad=&municipio=&t4g=true&tsatelital=true&tadsl=true" target="_blank">Puntos de Internet Gratuito a Nivel Nacional</a>
+                    </div>
+                    <div class="product-box">
+                        <a href="https://mapabts.cfeteit.mx/" target="_blank">Torres de telecomunicaciones de CFE en operación </a>
+                    </div>
+                    <div class="product-box">
+                        <a href="https://www.redcompartida.igg.unam.mx/geoportal/home" target="_blank">Cobertura Poblacional Nacional de Telefonía Celular</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <footer>
+            <p>&copy; 2024 CFE Telecomunicaciones e Internet para Todos. All Rights Reserved.</p>
+        </footer>
+    
+        <script>
+            // JavaScript para aplicar las imágenes de fondo de acuerdo al atributo data-bg
+            document.addEventListener("DOMContentLoaded", function() {
+                const serviceBlocks = document.querySelectorAll('.service-block');
+                serviceBlocks.forEach(block => {
+                    const bgImage = block.getAttribute('data-bg');
+                    if (bgImage) {
+                        block.style.backgroundImage = `url('${bgImage}')`;
+                    }
+                });
+            });
+        </script>
     </body>
     </html>
