@@ -14,18 +14,28 @@ spec:
       labels:
         app: apache
     spec:
+      initContainers:
+        - name: git-clone
+          image: alpine:latest  # Imagen liviana de Alpine para el contenedor que va a clonar el repo
+          command: ["/bin/sh", "-c"]
+          args:
+            - apk add --no-cache git && \
+              git clone https://github.com/tu_usuario/tu_repositorio.git /git-repo && \
+              cp -r /git-repo/* /mnt/apache-content/
+          volumeMounts:
+            - name: apache-content
+              mountPath: /mnt/apache-content
       containers:
         - name: apache
           image: registry.redhat.io/ubi9/httpd-24:latest
           ports:
-            - containerPort: 80
+            - containerPort: 8080
           volumeMounts:
             - name: apache-content
-              mountPath: /var/www/html/index.html
-              #mountPath: /usr/local/apache2/htdocs  # Ruta donde Apache sirve el contenido
+              mountPath: /usr/local/apache2/htdocs  # Ruta donde Apache sirve el contenido
             - name: index-html-config
-              mountPath: /usr/local/apache2/htdocs/index.html  # Montaje específico del archivo index.html
-              subPath: index.html  # Para montar solo este archivo
+              mountPath: /usr/local/apache2/htdocs/index.html  # Montaje específico del archivo index.html desde el ConfigMap
+              subPath: index.html
       volumes:
         - name: apache-content
           emptyDir: {}
@@ -43,7 +53,7 @@ spec:
   selector:
     app: apache
   ports:
-    - port: 80
+    - port: 8080
       targetPort: 8080
   type: ClusterIP
 
