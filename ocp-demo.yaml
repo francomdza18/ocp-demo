@@ -14,18 +14,6 @@ spec:
       labels:
         app: apache
     spec:
-      initContainers:
-        - name: git-clone
-          image: alpine:latest  # Imagen liviana de Alpine para el contenedor que va a clonar el repo
-          command: ["/bin/sh", "-c"]
-          args:
-            - apk add --no-cache git && \
-              git clone https://github.com/tu_usuario/tu_repositorio.git /git-repo && \
-              cp -r /git-repo/* /mnt/apache-content/ && \
-              echo "Clonación y copia completada" || echo "Error en clonación y copia"
-          volumeMounts:
-            - name: apache-content
-              mountPath: /mnt/apache-content
       containers:
         - name: apache
           image: registry.redhat.io/ubi9/httpd-24:latest
