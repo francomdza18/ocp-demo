@@ -20,11 +20,11 @@ spec:
           ports:
             - containerPort: 80
           volumeMounts:
-            - name: apache-content
-              mountPath: /var/www/html/test
-              #mountPath: /usr/local/apache2/htdocs  # Ruta donde Apache sirve el contenido
+            #- name: apache-content
+              #mountPath: /var/www/html/
             - name: index-html-config
-              mountPath: /usr/local/apache2/htdocs/index.html  # Montaje específico del archivo index.html
+              mountPath: /var/www/html//index.html
+              #mountPath: /usr/local/apache2/htdocs/index.html  # Montaje específico del archivo index.html
               subPath: index.html  # Para montar solo este archivo
       volumes:
         - name: apache-content
