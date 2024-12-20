@@ -21,22 +21,25 @@ spec:
           args:
             - dnf install -y git && \
               git clone https://github.com/francomdza18/ocp-demo.git /mnt/repo && \
-              cp -r /mnt/repo/* /var/www/html/
+              cp -r /mnt/repo/* /mnt/apache-content/
+          volumeMounts:
+            - name: apache-content
+              mountPath: /mnt/apache-content
+            - name: repo
+              mountPath: /mnt/repo
       containers:
         - name: apache
           image: registry.redhat.io/ubi9/httpd-24:latest
           ports:
             - containerPort: 80
-          #volumeMounts:
-          #  - name: index-html-config
-          #    mountPath: /var/www/html/index.html
-          #    subPath: index.html  # Para montar solo este archivo
+          volumeMounts:
+            - name: apache-content
+              mountPath: /var/www/html  # Aquí montamos el volumen donde Apache servirá los archivos
       volumes:
         - name: apache-content
-          emptyDir: {}
-        - name: index-html-config
-          configMap:
-            name: apache-index-config  # Nombre del ConfigMap con el index.html'  
+          emptyDir: {}  # Usamos un volumen temporal para copiar el contenido
+        - name: repo
+          emptyDir: {}  # Volumen temporal para almacenar el repo clonado 
 ---
 apiVersion: v1
 kind: Service
