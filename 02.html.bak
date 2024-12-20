@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-deployment
+  namespace: ocp-demo
+spec:
+  serviceAccountName: demo-nube
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apache
+  template:
+    metadata:
+      labels:
+        app: apache
+    spec:
+      containers:
+        - name: apache
+          image: registry.redhat.io/ubi9/httpd-24:latest
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: index-html-config
+              mountPath: /var/www/html/index.html
+              subPath: index.html  # Para montar solo este archivo
+      volumes:
+        - name: apache-content
+          emptyDir: {}
+        - name: index-html-config
+          configMap:
+            name: apache-index-config  # Nombre del ConfigMap con el index.html'  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-service
+  namespace: ocp-demo
+spec:
+  selector:
+    app: apache
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: ClusterIP
+
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: demo-route
+  namespace: ocp-demo
+spec:
+  path: /index.html
+  to:
+    kind: Service
+    name: demo-service
+  port:
+    targetPort: 8080
