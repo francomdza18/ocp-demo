@@ -14,32 +14,29 @@ spec:
       labels:
         app: apache
     spec:
-      initContainers:
-        - name: git-clone
-          image: registry.redhat.io/ubi9/ubi:latest  # Usando la imagen base UBI
-          command: ["/bin/bash", "-c"]
-          args:
-            - wget https://github.com/francomdza18/ocp-demo/archive/refs/heads/main.tar.gz -O /mnt/repo.tar.gz && \
-              tar -xzvf /mnt/repo.tar.gz -C /mnt/ && \
-              cp -r /mnt/ocp-demo-main/* /mnt/apache-content/
-          volumeMounts:
-            - name: apache-content
-              mountPath: /mnt/apache-content
-            - name: repo
-              mountPath: /mnt/repo
       containers:
         - name: apache
           image: registry.redhat.io/ubi9/httpd-24:latest
           ports:
             - containerPort: 80
           volumeMounts:
-            - name: apache-content
-              mountPath: /var/www/html  # Aquí montamos el volumen donde Apache servirá los archivos
+            # Montaje del archivo index.html desde el ConfigMap
+            - name: index-html-config
+              mountPath: /var/www/html/index.html
+              subPath: index.html
+            # Montaje de las imágenes en el directorio adecuado para Apache
+            - name: apache-images
+              mountPath: /var/www/html/images  # Puedes elegir otro directorio si prefieres
       volumes:
         - name: apache-content
-          emptyDir: {}  # Usamos un volumen temporal para copiar el contenido
-        - name: repo
-          emptyDir: {}  # Volumen temporal para almacenar el repo clonado 
+          emptyDir: {}
+        - name: index-html-config
+          configMap:
+            name: apache-index-config  # ConfigMap con el index.html
+        - name: apache-images
+          configMap:
+            name: apache-images-config  # ConfigMap con las imágenes
+ 
 ---
 apiVersion: v1
 kind: Service
