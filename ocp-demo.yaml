@@ -23,7 +23,7 @@ spec:
             #- name: apache-content
               #mountPath: /var/www/html/
             - name: index-html-config
-              mountPath: /var/www/html/
+              mountPath: /var/www/html/index.html
               #mountPath: /usr/local/apache2/htdocs/index.html  # Montaje específico del archivo index.html
               subPath: index.html  # Para montar solo este archivo
       volumes:
