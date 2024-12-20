@@ -51,5 +51,4 @@ spec:
   to:
     kind: Service
     name: apache-service
-  tls: null
   port: 8080
