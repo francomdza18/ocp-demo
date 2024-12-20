@@ -53,6 +53,7 @@ metadata:
   name: apache-route
   namespace: ocp-demo
 spec:
+  path: /index.html
   to:
     kind: Service
     name: apache-service
