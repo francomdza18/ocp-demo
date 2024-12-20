@@ -18,7 +18,7 @@ spec:
         - name: apache
           image: registry.redhat.io/ubi9/httpd-24:latest
           ports:
-            - containerPort: 80
+            - containerPort: 8080
           volumeMounts:
             # Ruta donde Apache sirve el contenido
             - name: index-html-config
@@ -41,8 +41,8 @@ spec:
   selector:
     app: apache
   ports:
-    - port: 80
-      targetPort: 80
+    - port: 8080
+      targetPort: 8080
   type: ClusterIP
 
 ---
@@ -56,4 +56,4 @@ spec:
     kind: Service
     name: apache-service
   port:
-    targetPort: 80
+    targetPort: 8080
