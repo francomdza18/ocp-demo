@@ -14,6 +14,13 @@ spec:
       labels:
         app: apache
     spec:
+      initContainers:
+        - name: git-clone
+          image: registry.redhat.io/ubi9/ubi:latest
+          command: ["/bin/bash", "-c"]
+          args:
+            - dnf install -y git && \
+              git clone https://github.com/francomdza18/ocp-demo.git /var/www/html
       containers:
         - name: apache
           image: registry.redhat.io/ubi9/httpd-24:latest
