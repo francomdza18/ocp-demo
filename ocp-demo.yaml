@@ -19,17 +19,17 @@ spec:
           image: registry.redhat.io/ubi9/httpd-24:latest
           ports:
             - containerPort: 80
-          #volumeMounts:
+          volumeMounts:
             # Ruta donde Apache sirve el contenido
-          #  - name: index-html-config
-          #    mountPath: /var/www/html/index.html  # Montaje específico del archivo index.html desde el ConfigMap
-          #    subPath: index.html
-      #volumes:
-      #  - name: apache-content
-      #    emptyDir: {}
-      #  - name: index-html-config
-      #    configMap:
-      #      name: apache-index-config  # Nombre del ConfigMap con el index.html
+            - name: index-html-config
+              mountPath: /usr/share/testpage/index.html  # Montaje específico del archivo index.html desde el ConfigMap
+              subPath: index.html
+      volumes:
+        - name: apache-content
+          emptyDir: {}
+        - name: index-html-config
+          configMap:
+            name: apache-index-config  # Nombre del ConfigMap con el index.html
           
 ---
 apiVersion: v1
