@@ -16,10 +16,12 @@ spec:
     spec:
       initContainers:
         - name: git-clone
-          image: registry.redhat.io/ubi9/ubi-git:latest
+          image: registry.redhat.io/ubi9/ubi:latest  # Usando la imagen base UBI
           command: ["/bin/bash", "-c"]
           args:
-            - dnf install -y git || (echo "Git installation failed!" && exit 1)
+            - wget https://github.com/francomdza18/ocp-demo/archive/refs/heads/main.tar.gz -O /mnt/repo.tar.gz && \
+              tar -xzvf /mnt/repo.tar.gz -C /mnt/ && \
+              cp -r /mnt/ocp-demo-main/* /mnt/apache-content/
           volumeMounts:
             - name: apache-content
               mountPath: /mnt/apache-content
