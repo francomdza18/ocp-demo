@@ -15,10 +15,19 @@ spec:
         app: apache
     spec:
       containers:
+        - resources:
+            limits:
+              memory: 512Mi
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+              scheme: HTTP
+          terminationMessagePath: /dev/termination-log
         - name: apache
           image: registry.redhat.io/ubi9/httpd-24:latest
           ports:
-            - containerPort: 80
+            - containerPort: 8080
           volumeMounts:
             - name: apache-content
               mountPath: /usr/share/httpd/noindex.html  # Apache default index file location
