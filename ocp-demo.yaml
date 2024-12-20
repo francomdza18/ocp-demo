@@ -19,9 +19,7 @@ spec:
           image: registry.redhat.io/ubi9/ubi:latest
           command: ["/bin/bash", "-c"]
           args:
-            - dnf install -y git || (echo "Git installation failed!" && exit 1) && \
-              git clone https://github.com/francomdza18/ocp-demo.git /mnt/repo && \
-              cp -r /mnt/repo/* /mnt/apache-content/
+            - dnf install -y git || (echo "Git installation failed!" && exit 1)
           volumeMounts:
             - name: apache-content
               mountPath: /mnt/apache-content
