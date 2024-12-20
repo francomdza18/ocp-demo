@@ -35,7 +35,9 @@ spec:
   selector:
     app: apache
   ports:
-    - port: 8080
+    - name: web
+      protocol: TCP
+      port: 8080
       targetPort: 8080
   type: ClusterIP
 
@@ -49,5 +51,5 @@ spec:
   to:
     kind: Service
     name: apache-service
-  port:
-    targetPort: 8080
+  tls: null
+  port: {}
