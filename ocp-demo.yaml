@@ -20,17 +20,11 @@ spec:
           ports:
             - containerPort: 80
           volumeMounts:
-            # Ruta donde Apache sirve el contenido
-            - name: index-html-config
-              mountPath: /usr/share/testpage/index.html  # Montaje específico del archivo index.html desde el ConfigMap
-              subPath: index.html
+            - name: apache-content
+              mountPath: /usr/share/httpd/noindex.html  # Apache default index file location
       volumes:
         - name: apache-content
-          emptyDir: {}
-        - name: index-html-config
-          configMap:
-            name: apache-index-config  # Nombre del ConfigMap con el index.html
-          
+          emptyDir: {}  # Temporary empty directory if necessary for the files   
 ---
 apiVersion: v1
 kind: Service
