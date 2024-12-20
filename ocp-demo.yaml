@@ -27,10 +27,10 @@ spec:
           image: registry.redhat.io/ubi9/httpd-24:latest
           ports:
             - containerPort: 80
-          volumeMounts:
-            - name: index-html-config
-              mountPath: /var/www/html/index.html
-              subPath: index.html  # Para montar solo este archivo
+          #volumeMounts:
+          #  - name: index-html-config
+          #    mountPath: /var/www/html/index.html
+          #    subPath: index.html  # Para montar solo este archivo
       volumes:
         - name: apache-content
           emptyDir: {}
