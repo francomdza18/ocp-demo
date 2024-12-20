@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: apache-images-config
+  namespace: ocp-demo
+data:
+  cfe_teit.png: "cfe_teit.png"  # Ruta relativa donde se encuentran las imágenes en tu repositorio
+  diagrama.png: "diagrama.png"  # Ruta de la segunda imagen
+  acceso-agregacion-bg.jpg: "acceso-agregacion-bg.jpg"  # Ruta de la segunda imagen
+  centro-datos-bg.jpg: "centro-datos-bg.jpg"  # Ruta de la segunda imagen
+  #image2.png: "/path/to/image2.png"  # Ruta de la segunda imagen
+  #image2.png: "/path/to/image2.png"  # Ruta de la segunda imagen
+  #image2.png: "/path/to/image2.png"  # Ruta de la segunda imagen
+  #image2.png: "/path/to/image2.png"  # Ruta de la segunda imagen
+  #image2.png: "/path/to/image2.png"  # Ruta de la segunda imagen
+  #image2.png: "/path/to/image2.png"  # Ruta de la segunda imagen
+  
+  # Puedes agregar más rutas de imágenes
