@@ -20,7 +20,8 @@ spec:
           command: ["/bin/bash", "-c"]
           args:
             - dnf install -y git && \
-              git clone https://github.com/francomdza18/ocp-demo.git /var/www/html
+              git clone https://github.com/francomdza18/ocp-demo.git /mnt/repo && \
+              cp -r /mnt/repo/* /var/www/html/
       containers:
         - name: apache
           image: registry.redhat.io/ubi9/httpd-24:latest
