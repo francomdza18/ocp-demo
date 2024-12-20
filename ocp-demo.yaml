@@ -53,6 +53,6 @@ spec:
   path: /index.html
   to:
     kind: Service
-    name: apache-service
+    name: demo-service
   port:
     targetPort: 8080
