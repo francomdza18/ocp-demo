@@ -26,7 +26,7 @@ spec:
               subPath: index.html
             # Montaje de las imágenes en el directorio adecuado para Apache
             - name: apache-images
-              mountPath: /var/www/html  # Directorio donde se montarán las imágenes
+              mountPath: /var/www/html/images  # Directorio donde se montarán las imágenes
       volumes:
         - name: apache-content
           emptyDir: {}
