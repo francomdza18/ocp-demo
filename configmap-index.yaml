@@ -297,7 +297,7 @@ data:
     </head>
     <body>
         <header>
-            <img src="/var/www/html/images/cfe_teit.png" alt="Header Image">
+            <img src="cfe_teit.png" alt="Header Image">
             <h1>Gerencia de Operación de la Red Pública de Telecomunicaciones</h1>
         </header>
     
