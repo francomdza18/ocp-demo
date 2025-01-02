@@ -319,7 +319,7 @@ data:
             <div class="section">
                 <h2>Servicios de la Red Pública de Telecomunicaciones</h2>
                 <!-- Red Transporte -->
-                <details class="service-block" data-bg="red-transporte-bg.jpg">
+                <details class="service-block" data-bg="/var/www/html/images/red-transporte-bg.jpg">
                     <summary>Red Transporte</summary>
                     <ul>
                         <li>- Red Transporte de Larga Distancia de 10Gbps a 100 Gbps con y sin redundancia</li>
