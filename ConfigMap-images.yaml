@@ -9,6 +9,7 @@ data:
   acceso-agregacion-bg.jpg: "acceso-agregacion-bg.jpg"  # Ruta de la segunda imagen
   centro-datos-bg.jpg: "centro-datos-bg.jpg"  # Ruta de la segunda imagen
   red-transporte-bg.jpg: "red-transporte-bg.jpg"  # Ruta de la segunda imagen
+  test-tiny.png: "test-tiny.png"
   #image2.png: "/path/to/image2.png"  # Ruta de la segunda imagen
   #image2.png: "/path/to/image2.png"  # Ruta de la segunda imagen
   #image2.png: "/path/to/image2.png"  # Ruta de la segunda imagen
