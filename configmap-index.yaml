@@ -342,10 +342,10 @@ data:
                 <details class="service-block" data-bg="centro-datos-bg.jpg">
                     <summary>Centro de Datos</summary>
                     <ul>
-                        <li>IaaS: Infraestructura como Servicio</li>
-                        <li>PaaS: Plataforma como Servicio</li>
-                        <li>SDS: Almacenamiento definido por Software</li>
-                        <li>Respaldo y Recuperación</li>
+                        <li>- IaaS: Infraestructura como Servicio</li>
+                        <li>- PaaS: Plataforma como Servicio</li>
+                        <li>- SDS: Almacenamiento definido por Software</li>
+                        <li>- Respaldo y Recuperación</li>
                     </ul>
                 </details>
                 <!-- Monitoreo -->
