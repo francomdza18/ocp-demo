@@ -3,59 +3,56 @@ kind: Pipeline
 metadata:
   name: pipeline-demo
 spec:
-  #
   description: | 
     Pipeline CI que hace el git clone
   params:
     - name: repo-url
       type: string
-      description: The git repo URL to clone from.  
-  
+      description: The git repo URL to clone from.
+      
   workspaces:
     - name: workspace-git
       description: | 
         Workspace para clonar el proyecto
+      
   tasks:
-  # Task Git clone que recibe los parametros de url y revision ( branch )
     - name: git-clone
-        params:
-          - name: url
-            value: 'https://github.com/francomdza18/ocp-demo.git'
-          - name: revision
-            value: ''
-          - name: refspec
-            value: ''
-          - name: submodules
-            value: 'true'
-          - name: depth
-            value: '1'
-          - name: sslVerify
-            value: 'true'
-          - name: crtFileName
-            value: ca-bundle.crt
-          - name: subdirectory
-            value: '/images'
-          - name: sparseCheckoutDirectories
-            value: ''
-          - name: deleteExisting
-            value: 'true'
-          - name: httpProxy
-            value: ''
-          - name: httpsProxy
-            value: ''
-          - name: noProxy
-            value: ''
-          - name: verbose
-            value: 'true'
-          - name: gitInitImage
-            value: 'gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/git-init:v0.40.2'
-          - name: userHome
-            value: /home/git
-        taskRef:
-          kind: Task
-          name: git-clone
-        workspaces:
-          - name: output
-            workspace: workspace-git
-    workspaces:
-      - name: workspace-git
+      taskRef:
+        kind: Task
+        name: git-clone
+      params:
+        - name: url
+          value: 'https://github.com/francomdza18/ocp-demo.git'
+        - name: revision
+          value: ''
+        - name: refspec
+          value: ''
+        - name: submodules
+          value: 'true'
+        - name: depth
+          value: '1'
+        - name: sslVerify
+          value: 'true'
+        - name: crtFileName
+          value: ca-bundle.crt
+        - name: subdirectory
+          value: '/images'
+        - name: sparseCheckoutDirectories
+          value: ''
+        - name: deleteExisting
+          value: 'true'
+        - name: httpProxy
+          value: ''
+        - name: httpsProxy
+          value: ''
+        - name: noProxy
+          value: ''
+        - name: verbose
+          value: 'true'
+        - name: gitInitImage
+          value: 'gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/git-init:v0.40.2'
+        - name: userHome
+          value: /home/git
+      workspaces:
+        - name: output
+          workspace: workspace-git
