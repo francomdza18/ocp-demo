@@ -5,13 +5,13 @@ metadata:
   namespace: ocp-demo
 spec:
   params:
-    - description: The git repository url
-      name: gitrepositoryurl
-    - default: This is the default message
+    - name: gitrepositoryurl
+      description: The git repository url
+    - name: message
       description: The message to print
-      name: message
-    - description: The Content-Type of the event
-      name: contenttype
+      default: This is the default message
+    - name: contenttype
+      description: The Content-Type of the event
   resourcetemplates:
     - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
@@ -20,8 +20,7 @@ spec:
       spec:
         params:
           - name: repo-url
-            value: >-
-              https://github.com/francomdza18/ocp-demo.git
+            value: "$(params.gitrepositoryurl)"
         pipelineRef:
           name: pipeline-demo
         workspaces:
