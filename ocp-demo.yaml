@@ -24,10 +24,7 @@ spec:
             - name: index-html-config
               mountPath: /var/www/html/index.html
               subPath: index.html
-            # Montaje de las imágenes en el directorio adecuado para Apache
-            - name: apache-images
-              mountPath: /var/www/html/images  # Directorio donde se montarán las imágenes
-            - name: volume-data
+            - name: pvc-git-pipeline
               mountPath: /mnt/
       volumes:
         - name: apache-content
@@ -35,12 +32,9 @@ spec:
         - name: index-html-config
           configMap:
             name: apache-index-config  # ConfigMap con el index.html
-        - name: apache-images
-          configMap:
-            name: apache-images-config
-        - name: volume-data
+        - name: pvc-git-pipeline
           persistentVolumeClaim:
-            claimName: volume-data
+            claimName: pvc-git-pipeline
  
 ---
 apiVersion: v1
