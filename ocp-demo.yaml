@@ -27,6 +27,8 @@ spec:
             # Montaje de las imágenes en el directorio adecuado para Apache
             - name: apache-images
               mountPath: /var/www/html/images  # Directorio donde se montarán las imágenes
+            - name: volume-data
+              mountPath: /mnt/
       volumes:
         - name: apache-content
           emptyDir: {}
