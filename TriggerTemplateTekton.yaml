@@ -1,0 +1,30 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: trigger-template-demo
+  namespace: ocp-demo
+spec:
+  params:
+    - description: The git repository url
+      name: gitrepositoryurl
+    - default: This is the default message
+      description: The message to print
+      name: message
+    - description: The Content-Type of the event
+      name: contenttype
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        generateName: pipelinerun-demo
+      spec:
+        params:
+          - name: repo-url
+            value: >-
+              https://github.com/francomdza18/ocp-demo.git
+        pipelineRef:
+          name: pipeline-demo
+        workspaces:
+          - name: workspace-git
+            persistentVolumeClaim:
+              claimName: pvc-git-pipeline
