@@ -5,6 +5,7 @@ metadata:
 spec:
   pipelineRef:
     name: pipeline-demo
+  serviceAccountName: tekton-adm
   
   workspaces:
     - name: workspace-git
