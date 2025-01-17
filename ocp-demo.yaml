@@ -38,6 +38,9 @@ spec:
         - name: apache-images
           configMap:
             name: apache-images-config
+        - name: volume-data
+          persistentVolumeClaim:
+            claimName: volume-data
  
 ---
 apiVersion: v1
