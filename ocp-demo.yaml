@@ -24,7 +24,7 @@ spec:
             - name: index-html-config
               mountPath: /var/www/html/index.html
               subPath: index.html
-            - name: pvc-git-pipeline
+            - name: pvc-git-demo
               mountPath: /mnt/
       volumes:
         - name: apache-content
@@ -32,9 +32,9 @@ spec:
         - name: index-html-config
           configMap:
             name: apache-index-config  # ConfigMap con el index.html
-        - name: pvc-git-pipeline
+        - name: pvc-git-demo
           persistentVolumeClaim:
-            claimName: pvc-git-pipeline
+            claimName: pvc-git-demo
  
 ---
 apiVersion: v1
