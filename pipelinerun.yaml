@@ -1,0 +1,17 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: pipelinerun-git-demo-
+spec: 
+
+  pipelineRef:
+    name: pipeline-demo
+
+  workspaces:
+  - name: workspace-git
+    persistentVolumeClaim:
+      claimName: pvc-git-pipeline
+    
+  params:
+  - name: repo-url
+    value: https://github.com/Carlos-ZRM/workbench-images.git
