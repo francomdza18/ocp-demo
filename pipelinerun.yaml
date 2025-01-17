@@ -14,4 +14,4 @@ spec:
   
   params:
     - name: repo-url
-      value: https://github.com/Carlos-ZRM/workbench-images.git
+      value: https://github.com/francomdza18/ocp-demo.git
