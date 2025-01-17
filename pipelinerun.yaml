@@ -10,7 +10,7 @@ spec:
   workspaces:
     - name: workspace-git
       persistentVolumeClaim:
-        claimName: pvc-git-pipeline
+        claimName: pvc-git-demo
   
   params:
     - name: repo-url
